@@ -37,7 +37,9 @@ Start docker-engine
 systemctl enable docker && systemctl start docker
 ----
 
-== Kubeadm Installation
+== Kubeadm
+
+== Nodes Installation
 
 [source,shell]
 ----
@@ -76,3 +78,35 @@ systemctl enable docker
 ----
 systemctl enable kubelet && systemctl start kubelet
 ----
+
+=== Master Installation
+
+Issue: Iptables
+
+[source,shell]
+----
+$ cat <<EOF >  /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+
+$ sysctl --system
+----
+
+
+Issue : https://github.com/kubernetes/kubernetes/issues/53333
+[source,shell]
+----
+sed -e '/^Environment="KUBELET_KUBECONFIG_ARGS/a Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+----
+
+Start Kubeadmin
+[source,shell]
+----
+kubeadm init --apiserver-advertise-address=192.168.1.110 --service-cidr 192.168.1.0/24 --pod-network-cidr 192.168.1.0/24
+----
+
+Sources : 
+
+- https://kubernetes.io/docs/setup/independent/install-kubeadm/#installing-docker
+- https://www.data-essential.com/hands-on-kubernetes-with-kubeadm/
