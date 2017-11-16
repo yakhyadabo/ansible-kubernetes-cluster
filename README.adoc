@@ -1,0 +1,40 @@
+= *Kubernetes cluster using Kubeadm*
+
+== Docker Installation 
+
+Add the Docker repo to use docker-engine 
+[source,shell]
+----
+tee /etc/yum.repos.d/docker.repo <<-'EOF'
+[dockerrepo]
+name=Docker Repository
+baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+EOF
+----
+
+Install docker-engine
+[source,shell]
+----
+yum install docker-engine -y
+----
+
+Make sure that the cgroup driver used by kubelet is the same as the one used by Docker. 
+[source,shell]
+----
+cat << EOF > /etc/docker/daemon.json
+{
+  "exec-opts": ["native.cgroupdriver=systemd"]
+}
+EOF
+----
+
+Start docker-engine 
+[source,shell]
+----
+systemctl enable docker && systemctl start docker
+----
+
+== Kubeadm Installation
