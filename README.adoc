@@ -118,3 +118,12 @@ Sources :
 
 - https://kubernetes.io/docs/setup/independent/install-kubeadm/#installing-docker
 - https://www.data-essential.com/hands-on-kubernetes-with-kubeadm/
+
+=== Reset Kubeadm
+
+[source,shell]
+----
+$ kubeadm reset
+$ systemctl daemon-reload 
+$ systemctl restart kubelet.service
+----
