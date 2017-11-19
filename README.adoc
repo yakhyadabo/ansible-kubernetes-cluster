@@ -79,6 +79,15 @@ systemctl enable docker
 systemctl enable kubelet && systemctl start kubelet
 ----
 
+Issue : https://github.com/kubernetes/kubernetes/issues/53333
+
+[source,shell]
+----
+sed -e '/^Environment="KUBELET_KUBECONFIG_ARGS/a Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+----
+
+Restart Kubectl
+
 === Master Installation
 
 Issue: Iptables
@@ -93,12 +102,12 @@ EOF
 $ sysctl --system
 ----
 
-
-Issue : https://github.com/kubernetes/kubernetes/issues/53333
+Start Kubeadmin
 [source,shell]
 ----
-sed -e '/^Environment="KUBELET_KUBECONFIG_ARGS/a Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+kubeadm init --apiserver-advertise-address=192.168.1.110 --service-cidr 192.168.1.0/24 --pod-network-cidr 192.168.1.0/24
 ----
+
 
 Issue : kubectl get: The connection to the server localhost:8080 was refused -Kubernetes
 [source,shell]
@@ -108,11 +117,7 @@ chown $(id -u):$(id -g) $HOME/admin.conf
 export KUBECONFIG=$HOME/admin.conf
 ----
 
-Start Kubeadmin
-[source,shell]
-----
-kubeadm init --apiserver-advertise-address=192.168.1.110 --service-cidr 192.168.1.0/24 --pod-network-cidr 192.168.1.0/24
-----
+Restart Kubectl
 
 Sources : 
 
