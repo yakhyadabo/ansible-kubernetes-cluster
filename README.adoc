@@ -39,7 +39,7 @@ systemctl enable docker && systemctl start docker
 
 == Kubeadm
 
-== Nodes Installation
+=== Nodes Installation
 
 [source,shell]
 ----
@@ -86,7 +86,13 @@ Issue : https://github.com/kubernetes/kubernetes/issues/53333
 sed -e '/^Environment="KUBELET_KUBECONFIG_ARGS/a Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 ----
 
-Restart Kubectl
+Reset Kubeadm
+[source,shell]
+----
+kubeadm reset
+systemctl daemon-reload
+systemctl restart kubelet.service
+----
 
 === Master Installation
 
@@ -118,13 +124,19 @@ export KUBECONFIG=$HOME/admin.conf
 ----
 
 Restart Kubectl
+[source,shell]
+----
+kubeadm reset
+systemctl daemon-reload
+systemctl restart kubelet.service
+----
 
 Sources : 
 
 - https://kubernetes.io/docs/setup/independent/install-kubeadm/#installing-docker
 - https://www.data-essential.com/hands-on-kubernetes-with-kubeadm/
 
-=== Reset Kubeadm
+=== Hot to reset Kubeadm
 
 [source,shell]
 ----
