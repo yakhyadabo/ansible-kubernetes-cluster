@@ -86,17 +86,7 @@ Issue : https://github.com/kubernetes/kubernetes/issues/53333
 sed -i '/^Environment="KUBELET_KUBECONFIG_ARGS/a Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 ----
 
-Reset Kubeadm
-[source,shell]
-----
-kubeadm reset
-systemctl daemon-reload
-systemctl restart kubelet.service
-----
-
-=== Master Installation
-
-Issue: Iptables
+Issue: /proc/sys/net/bridge/bridge-nf-call-iptables contents are not set to 1
 
 [source,shell]
 ----
@@ -107,6 +97,17 @@ EOF
 
 $ sysctl --system
 ----
+
+Reset Kubeadm
+[source,shell]
+----
+kubeadm reset
+systemctl daemon-reload
+systemctl restart kubelet.service
+----
+
+=== Master Installation
+
 
 Start Kubeadmin
 [source,shell]
