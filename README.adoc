@@ -98,38 +98,36 @@ EOF
 $ sysctl --system
 ----
 
-Reset Kubeadm
+Restart Kubectl
 [source,shell]
 ----
-kubeadm reset
-systemctl daemon-reload
-systemctl restart kubelet.service
+$ systemctl daemon-reload
+$ systemctl restart kubelet.service
 ----
 
 === Master Installation
 
-
 Start Kubeadmin
 [source,shell]
 ----
-kubeadm init --apiserver-advertise-address=192.168.1.110 --service-cidr 192.168.1.0/24 --pod-network-cidr 192.168.1.0/24
+$ kubeadm init --apiserver-advertise-address=192.168.1.110 --service-cidr 192.168.1.0/24 --pod-network-cidr 192.168.1.0/24
 ----
 
 
 Issue : kubectl get: The connection to the server localhost:8080 was refused -Kubernetes
 [source,shell]
 ----
-cp /etc/kubernetes/admin.conf $HOME/
-chown $(id -u):$(id -g) $HOME/admin.conf
-export KUBECONFIG=$HOME/admin.conf
+$ cp /etc/kubernetes/admin.conf $HOME/
+$ chown $(id -u):$(id -g) $HOME/admin.conf
+$ export KUBECONFIG=$HOME/admin.conf
 ----
 
-Restart Kubectl
+Reset and restart Kubeadm
 [source,shell]
 ----
-kubeadm reset
-systemctl daemon-reload
-systemctl restart kubelet.service
+$ kubeadm reset
+$ systemctl daemon-reload
+$ systemctl restart kubelet.service
 ----
 
 Sources : 
@@ -137,7 +135,7 @@ Sources :
 - https://kubernetes.io/docs/setup/independent/install-kubeadm/#installing-docker
 - https://www.data-essential.com/hands-on-kubernetes-with-kubeadm/
 
-=== Hot to reset Kubeadm
+=== How to reset Kubeadm
 
 [source,shell]
 ----
