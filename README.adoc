@@ -1,24 +1,33 @@
 = *Kubernetes cluster using Kubeadm*
 
-== Docker Installation 
+== Docker CE-17.03 Installation 
 
-Add the Docker repo to use docker-engine 
+Install yum-utils to config-manager
 [source,shell]
 ----
-tee /etc/yum.repos.d/docker.repo <<-'EOF'
-[dockerrepo]
-name=Docker Repository
-baseurl=https://yum.dockerproject.org/repo/main/centos/7/
-enabled=1
-gpgcheck=1
-gpgkey=https://yum.dockerproject.org/gpg
-EOF
+$ yum install -y yum-utils
 ----
 
-Install docker-engine
+Add Docker Repo
 [source,shell]
 ----
-yum install docker-engine -y
+$ yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+----
+
+Install Docker-ce 17.03
+[source,shell]
+----
+$ yum install -y --setopt=obsoletes=0  docker-ce-17.03.0.ce-1.el7.centos  docker-ce-selinux-17.03.0.ce-1.el7.centos
+----
+
+More details : https://docs.docker.com/engine/installation/linux/docker-ce/centos/#install-using-the-repository
+
+Start docker-engine 
+[source,shell]
+----
+$ systemctl enable docker.service && systemctl start docker.service
 ----
 
 Make sure that the cgroup driver used by kubelet is the same as the one used by Docker. 
@@ -31,10 +40,10 @@ cat << EOF > /etc/docker/daemon.json
 EOF
 ----
 
-Start docker-engine 
+Restart Docker
 [source,shell]
 ----
-systemctl enable docker && systemctl start docker
+$ systemctl restart docker.service  
 ----
 
 == Kubeadm
