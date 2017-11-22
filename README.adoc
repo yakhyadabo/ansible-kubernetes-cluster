@@ -132,12 +132,6 @@ $ chown $(id -u):$(id -g) $HOME/admin.conf
 $ export KUBECONFIG=$HOME/admin.conf
 ----
 
-Reset and restart Kubeadm
-[source,shell]
-----
-$ kubeadm reset && systemctl daemon-reload && systemctl restart kubelet.service
-----
-
 // Sources :
 
 // - https://kubernetes.io/docs/setup/independent/install-kubeadm/#installing-docker
