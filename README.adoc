@@ -1,5 +1,10 @@
 = *Kubernetes cluster using Kubeadm*
 
+*Targetted Infrastructure* +
+*OS :* Centos 7.3 +
+*Docker :* docker-ce-17.03 +
+*Kubernetes :* v1.8.3
+
 == Docker CE-17.03 Installation 
 
 Install yum-utils to config-manager
