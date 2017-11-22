@@ -38,7 +38,7 @@ $ systemctl enable docker.service && systemctl start docker.service
 Make sure that the cgroup driver used by kubelet is the same as the one used by Docker. 
 [source,shell]
 ----
-cat << EOF > /etc/docker/daemon.json
+$ cat << EOF > /etc/docker/daemon.json
 {
   "exec-opts": ["native.cgroupdriver=systemd"]
 }
@@ -57,7 +57,7 @@ $ systemctl restart docker.service
 
 [source,shell]
 ----
-cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+$ cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
 baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
@@ -71,7 +71,7 @@ EOF
 Disable SELINUX
 [source,shell]
 ----
-sed -i '/^SELINUX./ { s/enforcing/disabled/; }' /etc/selinux/config
+$ sed -i '/^SELINUX./ { s/enforcing/disabled/; }' /etc/selinux/config
 ----
 
 [source,shell]
@@ -82,7 +82,7 @@ setenforce 0
 Install kubeadm 1.8.3
 [source,shell]
 ----
-$ yum install -y kubectl-1.8.3-0.x86_64  kubelet-1.8.3-0.x86_64  kubeadm-1.8.3-0.x86_64  kubernetes-cni-0.5.1-1.x86_64  ----
+$ yum install -y kubectl-1.8.3-0.x86_64  kubelet-1.8.3-0.x86_64  kubeadm-1.8.3-0.x86_64  kubernetes-cni-0.5.1-1.x86_64
 ----
 
 [source,shell]
@@ -94,7 +94,7 @@ Issue : https://github.com/kubernetes/kubernetes/issues/53333
 
 [source,shell]
 ----
-sed -i '/^Environment="KUBELET_KUBECONFIG_ARGS/a Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+$ sed -i '/^Environment="KUBELET_KUBECONFIG_ARGS/a Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 ----
 
 Issue: /proc/sys/net/bridge/bridge-nf-call-iptables contents are not set to 1
@@ -112,8 +112,7 @@ $ sysctl --system
 Restart Kubectl
 [source,shell]
 ----
-$ systemctl daemon-reload
-$ systemctl restart kubelet.service
+$ systemctl daemon-reload && systemctl restart kubelet.service
 ----
 
 === Master Installation
@@ -136,21 +135,17 @@ $ export KUBECONFIG=$HOME/admin.conf
 Reset and restart Kubeadm
 [source,shell]
 ----
-$ kubeadm reset
-$ systemctl daemon-reload
-$ systemctl restart kubelet.service
+$ kubeadm reset && systemctl daemon-reload && systemctl restart kubelet.service
 ----
 
-Sources : 
+// Sources :
 
-- https://kubernetes.io/docs/setup/independent/install-kubeadm/#installing-docker
-- https://www.data-essential.com/hands-on-kubernetes-with-kubeadm/
+// - https://kubernetes.io/docs/setup/independent/install-kubeadm/#installing-docker
+// - https://www.data-essential.com/hands-on-kubernetes-with-kubeadm/
 
 === How to reset Kubeadm
 
 [source,shell]
 ----
-$ kubeadm reset
-$ systemctl daemon-reload 
-$ systemctl restart kubelet.service
+$ kubeadm reset && systemctl daemon-reload && systemctl restart kubelet.service
 ----
