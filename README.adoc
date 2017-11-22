@@ -46,7 +46,7 @@ Restart Docker
 $ systemctl restart docker.service  
 ----
 
-== Kubeadm
+== Kubeadm 1.8.3
 
 === Nodes Installation
 
@@ -63,6 +63,7 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cl
 EOF
 ----
 
+Disable SELINUX
 [source,shell]
 ----
 sed -i '/^SELINUX./ { s/enforcing/disabled/; }' /etc/selinux/config
@@ -73,19 +74,15 @@ sed -i '/^SELINUX./ { s/enforcing/disabled/; }' /etc/selinux/config
 setenforce 0
 ----
 
+Install kubeadm 1.8.3
 [source,shell]
 ----
-yum install -y kubeadm kubectl kubernetes-cni
+$ yum install -y kubectl-1.8.3-0.x86_64  kubelet-1.8.3-0.x86_64  kubeadm-1.8.3-0.x86_64  kubernetes-cni-0.5.1-1.x86_64  ----
 ----
 
 [source,shell]
 ----
-systemctl enable docker
-----
-
-[source,shell]
-----
-systemctl enable kubelet && systemctl start kubelet
+$ systemctl enable kubelet.service && systemctl start kubelet.service
 ----
 
 Issue : https://github.com/kubernetes/kubernetes/issues/53333
@@ -119,7 +116,7 @@ $ systemctl restart kubelet.service
 Start Kubeadmin
 [source,shell]
 ----
-$ kubeadm init --apiserver-advertise-address=192.168.1.110 --service-cidr 192.168.1.0/24 --pod-network-cidr 192.168.1.0/24
+$ kubeadm init --apiserver-advertise-address=192.168.2.110 --service-cidr 192.168.2.0/24 --pod-network-cidr 192.168.2.0/24
 ----
 
 
