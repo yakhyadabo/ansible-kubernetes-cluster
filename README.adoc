@@ -143,11 +143,44 @@ $ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Docum
 // - https://www.data-essential.com/hands-on-kubernetes-with-kubeadm/
 
 === Debugging
+Display components pods
 [source,shell]
 ----
 $ kubectl -n kube-system get pods
+
+NAME                                     READY     STATUS    RESTARTS   AGE
+etcd-master.app.dev                      1/1       Running   0          1h
+kube-apiserver-master.app.dev            1/1       Running   0          1h
+kube-controller-manager-master.app.dev   1/1       Running   0          1h
+kube-dns-545bc4bfd4-9tlbn                3/3       Running   0          1h
+kube-flannel-ds-5zpgs                    1/1       Running   0          1h
+kube-flannel-ds-lhtxq                    1/1       Running   2          1h
+kube-flannel-ds-sgxbd                    1/1       Running   2          1h
+kube-proxy-j48pm                         1/1       Running   0          1h
+kube-proxy-j4lbm                         1/1       Running   0          1h
+kube-proxy-p7zwv                         1/1       Running   0          1h
+kube-scheduler-master.app.dev            1/1       Running   0          1h
 ----
 
+Displays all pods
+[source,shell]
+----
+$ kubectl get pods --all-namespaces
+
+NAMESPACE     NAME                                     READY     STATUS    RESTARTS   AGE
+default       kuard                                    1/1       Running   0          55m
+kube-system   etcd-master.app.dev                      1/1       Running   0          1h
+kube-system   kube-apiserver-master.app.dev            1/1       Running   0          1h
+kube-system   kube-controller-manager-master.app.dev   1/1       Running   0          1h
+kube-system   kube-dns-545bc4bfd4-9tlbn                3/3       Running   0          1h
+kube-system   kube-flannel-ds-5zpgs                    1/1       Running   0          1h
+kube-system   kube-flannel-ds-lhtxq                    1/1       Running   2          1h
+kube-system   kube-flannel-ds-sgxbd                    1/1       Running   2          1h
+kube-system   kube-proxy-j48pm                         1/1       Running   0          1h
+kube-system   kube-proxy-j4lbm                         1/1       Running   0          1h
+kube-system   kube-proxy-p7zwv                         1/1       Running   0          1h
+kube-system   kube-scheduler-master.app.dev            1/1       Running   0          1h
+----
 
 // --enable-debugging-handlers=true (logs, exec, port-forward, ...)
 === How to reset Kubeadm
