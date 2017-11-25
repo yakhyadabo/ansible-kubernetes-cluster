@@ -76,7 +76,7 @@ $ sed -i '/^SELINUX./ { s/enforcing/disabled/; }' /etc/selinux/config
 
 [source,shell]
 ----
-setenforce 0
+$ setenforce 0
 ----
 
 Install kubeadm 1.8.3
@@ -142,7 +142,19 @@ $ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Docum
 // - https://kubernetes.io/docs/setup/independent/install-kubeadm/#installing-docker
 // - https://www.data-essential.com/hands-on-kubernetes-with-kubeadm/
 
-=== Debugging
+=== Debugging#
+Displays all nodes
+[source,shell]
+----
+$ kubectl get nodes
+
+NAME              STATUS     ROLES     AGE       VERSION
+master.app.dev    NotReady   master    3m        v1.8.3
+minion1.app.dev   NotReady   <none>    1m        v1.8.3
+minion2.app.dev   NotReady   <none>    1m        v1.8.3
+minion3.app.dev   NotReady   <none>    1m        v1.8.3
+----
+
 Display components pods
 [source,shell]
 ----
