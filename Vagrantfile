@@ -23,10 +23,10 @@ Vagrant.configure(2) do |config|
   # The 'ip route show' command can also be used to display the Ip to use (Ex 10.0.2.15)
   
   [ 
-    {:name => 'master',   :ip  => '192.168.2.110', :mac => '5CA1AB1E0010'},
-    {:name => 'minion1',  :ip  => '192.168.2.111', :mac => '5CA1AB1E0011'},
-    {:name => 'minion2',  :ip  => '192.168.2.112', :mac => '5CA1AB1E0012'},
-    {:name => 'minion3',  :ip  => '192.168.2.113', :mac => '5CA1AB1E0013'}
+    {:name => 'master',   :ip  => '192.168.2.110'},
+    {:name => 'minion1',  :ip  => '192.168.2.111'},
+    {:name => 'minion2',  :ip  => '192.168.2.112'},
+    {:name => 'minion3',  :ip  => '192.168.2.113'}
   ].each do |infos|
 
     config.vm.define infos[:name] do |host|
