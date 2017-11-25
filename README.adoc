@@ -3,7 +3,10 @@
 *Targetted Infrastructure* +
 *OS :* Centos 7.3 +
 *Docker :* docker-ce-17.03 +
-*Kubernetes :* v1.8.3
+*Kubernetes :* v1.8.3 +
+*Network plugin :* Flannel 0.9.1 +
+*Vagrant version :* 2.0.1 +
+*VirtualBox version :* 5.2.2
 
 == Docker CE-17.03 Installation 
 
