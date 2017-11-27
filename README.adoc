@@ -152,10 +152,10 @@ Displays all nodes
 $ kubectl get nodes
 
 NAME              STATUS     ROLES     AGE       VERSION
-master.app.dev    NotReady   master    3m        v1.8.3
-minion1.app.dev   NotReady   <none>    1m        v1.8.3
-minion2.app.dev   NotReady   <none>    1m        v1.8.3
-minion3.app.dev   NotReady   <none>    1m        v1.8.3
+master.app.dev    Ready      master    3m        v1.8.3
+minion1.app.dev   Ready      <none>    1m        v1.8.3
+minion2.app.dev   Ready      <none>    1m        v1.8.3
+minion3.app.dev   Ready      <none>    1m        v1.8.3
 ----
 
 Display components pods
