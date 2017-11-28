@@ -8,7 +8,34 @@
 *Vagrant version :* 2.0.1 +
 *VirtualBox version :* 5.2.2
 
-== Docker CE-17.03 Installation 
+== The Vagrantfile
+
+We want to be able to build locally, with Vagrant, something strongly close to DEV, TEST and Production environments. For that, it's necessary to treat each VM like a real host. +
+In his article http://hakunin.com/six-ansible-practices[6 practices for super smooth Ansible experience] Maxim Chernyak shares some inspiring insights : +
+- Make it easy to sync your hosts file with your VMs +
+- Automate adding your pub key to VMs +
+- Configure your ssh client +
+ 
+After installing Vagrant, add *_vagrant-hostsupdater_* plugin to automatically add and remove hosts every time you add or destroy VMs.   +
+
+[source,shell]
+----
+$ vagrant plugin install vagrant-hostsupdater
+----
+
+Add *vagrant-vbguest* plugin which will check and update the VirtualBox guest when VirtualBox is upgraded
+[source,shell]
+----
+$ vagrant plugin install vagrant-vbguest
+----
+
+The next step is to set up the VMS.
+[source,shell]
+----
+$ vagrant up
+----
+
+== Docker CE-17.03 Installation
 
 Install yum-utils to config-manager
 [source,shell]
@@ -145,7 +172,8 @@ $ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Docum
 // - https://kubernetes.io/docs/setup/independent/install-kubeadm/#installing-docker
 // - https://www.data-essential.com/hands-on-kubernetes-with-kubeadm/
 
-=== Debugging#
+=== Debugging
+
 Displays all nodes
 [source,shell]
 ----
