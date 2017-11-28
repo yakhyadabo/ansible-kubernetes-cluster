@@ -1,6 +1,6 @@
 = *Kubernetes cluster using Kubeadm*
 
-*Targetted Infrastructure* +
+*Targeted Infrastructure* +
 *OS :* Centos 7.3 +
 *Docker :* docker-ce-17.03 +
 *Kubernetes :* v1.8.3 +
@@ -24,7 +24,7 @@ $ yum-config-manager \
     https://download.docker.com/linux/centos/docker-ce.repo
 ----
 
-Install Docker-ce 17.03
+Install Docker ce-17.03
 [source,shell]
 ----
 $ yum install -y --setopt=obsoletes=0  docker-ce-17.03.0.ce-1.el7.centos  docker-ce-selinux-17.03.0.ce-1.el7.centos
