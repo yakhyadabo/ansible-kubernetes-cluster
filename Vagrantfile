@@ -31,12 +31,7 @@ Vagrant.configure(2) do |config|
 
     config.vm.define infos[:name] do |host|
       host.vm.network "private_network", ip: infos[:ip], mac: infos[:mac]
-      # host.vm.network "forwarded_port", guest: 8083, host: infos[:port0]
-      # host.vm.network "forwarded_port", guest: 9092, host: infos[:port1]
       host.vm.hostname = "#{infos[:name]}.app.dev"
-     # if infos[:name] == "ci"
-     #   host.vm.network "forwarded_port", guest: 5000, host: 5000
-     # end 
     end
   end
 
