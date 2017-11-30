@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: kuard
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      nodePort: 8080
+  selector:
+    name: kuard
+
+
+
+# kubectl apply -f ...
