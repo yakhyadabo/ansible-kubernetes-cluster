@@ -225,6 +225,22 @@ kube-system   kube-proxy-p7zwv                         1/1       Running   0    
 kube-system   kube-scheduler-master.app.dev            1/1       Running   0          1h
 ----
 
+//
+
+// Master node
+//
+// etcd: the key-value store from CoreOS
+// api server: it is Kubernetes entry point for external and internal services
+// scheduler: choose on which minion run a Pod, depending of it’s resources
+// controller manager: create, update and destroy resources that he manage
+//
+// Worker node (minion)
+//
+// kubelet: verify that minion is well, and perform health check on Pods
+// kube-proxy: act as a proxy and a load-balancer, he manage network traffic
+// - https://www.data-essential.com/hands-on-kubernetes-with-kubeadm/
+
+
 // --enable-debugging-handlers=true (logs, exec, port-forward, ...)
 === How to reset Kubeadm
 
