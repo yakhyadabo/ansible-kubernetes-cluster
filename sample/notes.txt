@@ -1,0 +1,2 @@
+Resources management : https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/
+Exposing resources : http://alesnosek.com/blog/2017/02/14/accessing-kubernetes-pods-from-outside-of-the-cluster/
