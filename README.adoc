@@ -10,7 +10,8 @@
 
 == The Vagrantfile
 
-We want to be able to build locally, with Vagrant, something strongly close to DEV, TEST and Production environments. For that, it's necessary to treat each VM like a real host. +
+When working in a DevOps context, you should be able to build locally an infrastructure strongly close to your DEV, TEST and Production environments.
+For that, it's necessary to treat each Virtual Machine like a real host. +
 In his article http://hakunin.com/six-ansible-practices[6 practices for super smooth Ansible experience] Maxim Chernyak shares some inspiring insights : +
 - Make it easy to sync your hosts file with your VMs +
 - Automate adding your pub key to VMs +
