@@ -38,7 +38,7 @@ $ vagrant up
 
 == Docker CE-17.03 Installation
 
-Install yum-utils to config-manager
+Install yum-utils to use config-manager
 [source,shell]
 ----
 $ yum install -y yum-utils
