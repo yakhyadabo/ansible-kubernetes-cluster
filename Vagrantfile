@@ -21,18 +21,18 @@ Vagrant.configure(2) do |config|
 
   # 192.168.1.1  : The ip that refers to localhost
   # The 'ip route show' command can also be used to display the Ip to use (Ex 10.0.2.15)
-  
-  [ 
-    {:name => 'master',   :ip  => '192.168.2.110'},
-    {:name => 'minion1',  :ip  => '192.168.2.111'},
-    {:name => 'minion2',  :ip  => '192.168.2.112'},
-    {:name => 'minion3',  :ip  => '192.168.2.113'}
-  ].each do |infos|
 
-    config.vm.define infos[:name] do |host|
-      host.vm.network "private_network", ip: infos[:ip], mac: infos[:mac]
-      host.vm.hostname = "#{infos[:name]}.app.dev"
-    end
-  end
+ [ 
+   {:name => 'master',   :ip  => '192.168.2.110'},
+   {:name => 'node1',  :ip  => '192.168.2.111'},
+   {:name => 'node2',  :ip  => '192.168.2.112'},
+   {:name => 'node3',  :ip  => '192.168.2.113'}
+ ].each do |infos|
+
+   config.vm.define infos[:name] do |host|
+     host.vm.network "private_network", ip: infos[:ip], mac: infos[:mac]
+     host.vm.hostname = "#{infos[:name]}.app.dev"
+   end
+ end
 
 end
