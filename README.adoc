@@ -36,6 +36,21 @@ The next step is to set up the VMS.
 $ vagrant up
 ----
 
+== Creating cluster with Ansible 
+The cluster can be created using this https://github.com/geerlingguy/ansible-role-kubernetes[kubernetes role]. 
+
+Install playbook depencies: 
+[source,shell]
+----
+$ make install
+----
+
+Create cluster
+[source,shell]
+----
+$ make cluster
+----
+
 == Docker CE-17.03 Installation
 
 Install yum-utils to use config-manager
