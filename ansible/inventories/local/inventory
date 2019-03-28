@@ -1,0 +1,7 @@
+[master]
+master.app.dev
+
+[nodes]
+node1.app.dev
+node2.app.dev
+node3.app.dev
