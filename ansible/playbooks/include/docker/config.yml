@@ -1,0 +1,8 @@
+
+---
+- name: Add default docker user to docker group
+  user:
+    name: "{{ item }}"
+    append: yes
+    groups: docker
+  with_items: '{{ docker_users }}'

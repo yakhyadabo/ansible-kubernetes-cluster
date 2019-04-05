@@ -6,3 +6,6 @@
   roles:
     - docker
     - kubernetes
+
+  tasks:
+    - include: include/docker/config.yml
