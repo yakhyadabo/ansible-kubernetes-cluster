@@ -1,12 +1,16 @@
+docker_users: 
+  - vagrant
+
+# Docker version
+docker_edition: 'ce'
+# docker-{{ docker_edition }}: '18.06'
+
 kubernetes_version: '1.13'
 kubernetes_version_rhel_package: '1.13.3'
 
 kubernetes_allow_pods_on_master: false
 
-kubernetes_pod_network_cidr: '10.244.0.0/16'
+# kubernetes_pod_network_cidr: '10.244.0.0/16'
 kubernetes_apiserver_advertise_address: '192.168.2.110'
 kubernetes_version_kubeadm: 'stable-{{ kubernetes_version }}'
 kubernetes_ignore_preflight_errors: 'all'
-
-
-# kubeadm init --apiserver-advertise-address=192.168.2.110 --service-cidr 192.168.2.0/24 --pod-network-cidr=10.244.0.0/16
