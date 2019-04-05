@@ -6,7 +6,12 @@ require_relative './vagrant/key_authorization'
 Vagrant.configure(2) do |config|
 
   config.vm.box = "centos/7"
- 
+
+  config.vm.provider "virtualbox" do |v|
+     v.memory = 1024
+     v.cpus = 2
+  end 
+
   config.ssh.insert_key = false 
   # config.hostmanager.enabled = true
   # config.hostmanager.manage_host = true
