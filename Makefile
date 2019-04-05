@@ -24,3 +24,6 @@ update:
 
 cluster: 
 	@cd ansible && ansible-playbook -i inventories/local/inventory playbooks/kubernetes.yml 
+
+reset: 
+	@cd ansible && ansible-playbook -i inventories/local/inventory playbooks/reset-cluster.yml 
