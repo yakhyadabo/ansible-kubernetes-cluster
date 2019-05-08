@@ -6,6 +6,11 @@
       shell: "kubeadm reset --force"
       ignore_errors: True
 
+    - name: Reset iptables
+      shell: iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
+
+    - name: Set bridge
+      shell: echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
    ## - name: Delete flannel.1 interface
    ##   command: ip link delete flannel.1
    ##   when: network == "flannel"
