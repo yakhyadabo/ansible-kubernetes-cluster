@@ -1,7 +1,12 @@
 - hosts: all
 
   vars:
-    kubernetes_allow_pods_on_master: True
+    kubernetes_allow_pods_on_master: False
+  
+  pre_tasks:
+    - name: Disable Swap
+      shell: "swapoff -a"
+      ignore_errors: True
 
   roles:
     - docker
