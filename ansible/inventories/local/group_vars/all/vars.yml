@@ -5,8 +5,8 @@ docker_users:
 docker_edition: 'ce'
 # docker-{{ docker_edition }}: '18.06'
 
-kubernetes_version: '1.14'
-kubernetes_version_rhel_package: '1.14.1'
+kubernetes_version: '1.15'
+kubernetes_version_rhel_package: '1.15.0'
 
 kubernetes_allow_pods_on_master: false
 
