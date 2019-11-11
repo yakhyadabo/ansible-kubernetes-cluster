@@ -10,6 +10,10 @@ kubernetes_version_rhel_package: '1.15.0'
 
 kubernetes_allow_pods_on_master: false
 
+kubernetes_kubelet_extra_args: "--node-ip=192.168.2.1"
+
+kubernetes_yum_arch: x86_64
+
 # kubernetes_pod_network_cidr: '10.244.0.0/16'
 kubernetes_apiserver_advertise_address: '192.168.2.110'
 kubernetes_version_kubeadm: 'stable-{{ kubernetes_version }}'
