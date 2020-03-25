@@ -25,5 +25,8 @@ update:
 cluster: 
 	@cd ansible && ansible-playbook -i inventories/local/inventory playbooks/kubernetes.yml 
 
+flannel:
+	@kubectl delete -f kube-flannel.yaml && kubectl apply -f kube-flannel.yaml
+
 reset: 
 	@cd ansible && ansible-playbook -i inventories/local/inventory playbooks/reset-cluster.yml 
