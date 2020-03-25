@@ -1,0 +1,2 @@
+
+kubernetes_kubelet_extra_args: "--node-ip=192.168.2.112"
