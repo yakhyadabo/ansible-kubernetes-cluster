@@ -2,11 +2,26 @@
 
   vars:
     kubernetes_allow_pods_on_master: False
+    kubernetes_flannel_manifest_file: "/etc/kube-flannel.yaml"
   
   pre_tasks:
     - name: Disable Swap
       shell: "swapoff -a"
       ignore_errors: True
+
+    - name: Copy file with owner and permission, using symbolic representation
+      copy:
+        src: "{{ lookup('env', 'PWD') }}/kube-flannel.yaml"
+        dest: "{{ kubernetes_flannel_manifest_file }}"
+        # owner: vagrant
+        # group: docker
+        mode: u=rw,g=r,o=r
+      when: "{{ kubernetes_role == 'master' }}"
+
+    - debug:
+        msg: "Flannel manifest file value is {{ kubernetes_flannel_manifest_file }}"
+      when: "{{ kubernetes_role == 'master' }}"
+
 
   roles:
     - docker
