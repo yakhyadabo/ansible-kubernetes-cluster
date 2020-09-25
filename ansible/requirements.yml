@@ -1,15 +1,15 @@
 ---
 # From Ansible Galaxy
 - src: geerlingguy.docker
-  version: "2.1.0"
+  version: "2.8.1"
   name: docker
 
 # Installs the EPEL repository (Extra Packages for Enterprise Linux) for RHEL/CentOS.
 - src: geerlingguy.repo-epel
-  version: "1.2.3"
+  version: "1.3.0"
   name: centos-epel-repo
 
 - src: geerlingguy.kubernetes
-  version: "3.0.1"
+  version: "5.0.0"
   name: kubernetes
 
